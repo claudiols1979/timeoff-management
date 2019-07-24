@@ -58,3 +58,4 @@ node {
         checkout scm
         }
     }
+}
