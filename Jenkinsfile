@@ -67,7 +67,7 @@ node {
     stage('Ansible orchestrate AWS') {
     /* ssh into ansible.local and provsion nodejs to aws ec2 instance */
                 node ('centos') {
-                    sh 'ssh -v -o StrictHostKeyChecking=no ansible/ansible@ansible.local "cd /home/ansible/.ansible/roles/geerlingguy.nodejs" "ansible-playbook site.yml"'
+                    sh 'sshpass -p "ansible" ssh -v -o StrictHostKeyChecking=no ansible@ansible.local "cd /home/ansible/.ansible/roles/geerlingguy.nodejs" "ansible-playbook site.yml"'
         
                 
             }
