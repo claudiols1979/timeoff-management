@@ -41,7 +41,7 @@ node {
     stage('deploy to prod')  {
         
             
-                docker.image("claudiols1979/nodeapp_test:${env.BUILD_NUMBER}").inside('-p 8000:8000'){
+                docker.image("claudiols1979/nodeapp_test:${env.BUILD_NUMBER}").inside('-p 3000:3000'){
                 
             }
                 sh "./scripts/build.sh"
