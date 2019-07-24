@@ -51,11 +51,12 @@ node {
 
         }
 
-    node ('aws') {
-        stage('Clone repository') {
-        /* Cloning the Repository to our Workspace */
-
-        checkout scm
+     
+    stage('Clone repository') {
+    /* Cloning the Repository to our Workspace */
+                node ('aws') {
+                    checkout scm
         }
+         
     }
 }
