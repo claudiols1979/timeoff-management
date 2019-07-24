@@ -23,6 +23,6 @@ set +x
 
 
 echo 'Now...'
-echo 'Visit http://localhost:3000 to see your Node.js/React application in action.'
+echo 'Visit http://centos.local:3000 or http://54.191.40.36:3000 if this is the last stage to see your Node.js application in action.'
 echo '(This is why you specified the "args ''-p 3000:3000''" parameter when you'
 echo 'created your initial Pipeline as a Jenkinsfile.)'
