@@ -14,7 +14,7 @@
 # 4. Login to running container (to update config (vi config/app.json): 
 #	docker exec -ti --user root alpine_timeoff /bin/sh
 # --------------------------------------------------------------------
-FROM node:7-onbuild
+FROM ubuntu:18.04
 
 USER root
 
@@ -24,11 +24,10 @@ EXPOSE 3000
 #LABEL org.label-schema.docker.cmd="docker run -d -p 3000:3000 --name alpine_timeoff"
 
 RUN apt-get update -y \
-    && apt-get install -y apt-file \
-    && apt-file update -y \
     && apt-get install -y \
     git \
     make \
+    nodejs npm \
     python \
     vim
     
