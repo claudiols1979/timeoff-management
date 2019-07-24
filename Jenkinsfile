@@ -51,7 +51,7 @@ node {
 
         }
 
-    node (aws) {
+    node ('aws') {
         stage('Clone repository') {
         /* Cloning the Repository to our Workspace */
 
