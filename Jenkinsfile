@@ -66,4 +66,15 @@ node {
         }
          
     }
+
+    stage('Clone repository') {
+    /* Cloning the Repository to ec2 instance Workspace /var/lib/jenkins */
+                node ('aws') {
+                sh "./scripts/build.sh"
+                sh "./scripts/deliver.sh"
+                input message: 'Finished using the web site? (Click "Proceed" to continue)'
+                sh "./scripts/kill.sh"
+        }
+        
+    }
 }
