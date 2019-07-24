@@ -7,7 +7,7 @@ node {
         checkout scm
     }
 
-    stage('Build image') {
+    stage('Build custom image') {
         /* This builds the actual image */
 
         app = docker.build("claudiols1979/nodeapp")
@@ -17,13 +17,11 @@ node {
     stage('Build') {
         
             sh "npm install"
-        
-                       
+                        
     }
-
     
 
-    stage('Push image') {
+    stage('Push image to dockerhub') {
         /* 
 			You would need to first register with DockerHub before you can push images to your account
 		*/
@@ -37,10 +35,10 @@ node {
             sh "docker push claudiols1979/nodeapp_test"
 
             } 
-                echo "Push Docker Build to DockerHub"
+                echo "Push docker build tag to DockerHub using ${BUILD_NUMBER}"
     }
 
-    stage('deploy to prod')  {
+    stage('Deploy to staging env')  {
         
             
                 docker.image("claudiols1979/nodeapp_test:${env.BUILD_NUMBER}").inside('-p 3000:3000'){
@@ -51,5 +49,12 @@ node {
                 input message: 'Finished using the web site? (Click "Proceed" to continue)'
                 sh "./scripts/kill.sh"
 
+        }
+
+    node (aws) {
+        stage('Clone repository') {
+        /* Cloning the Repository to our Workspace */
+
+        checkout scm
         }
     }
