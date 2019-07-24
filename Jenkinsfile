@@ -51,9 +51,16 @@ node {
 
         }
 
+    stage('Ansible orchestrate AWS') {
+    /* ssh into ansible.local and provsion nodejs to aws ec2 instance */
+                node ('aws') {
+                    sh 'ssh -v -o StrictHostKeyChecking=no ansible@ansible.local "cd /home/ansible/.ansible/roles/ansible-role-nodejs" "ansible-playbook site.yml"'
+        }
+         
+    }
      
     stage('Clone repository') {
-    /* Cloning the Repository to our Workspace */
+    /* Cloning the Repository to ec2 instance Workspace /var/lib/jenkins */
                 node ('aws') {
                     checkout scm
         }
