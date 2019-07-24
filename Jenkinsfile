@@ -67,7 +67,7 @@ node {
     stage('Ansible orchestrate AWS') {
     /* ssh into ansible.local and provsion nodejs to aws ec2 instance */
                 node ('ansible') {
-                    sh "ansible-playbook /home/ansible/.ansible/roles/ansible-role-nodejs/site.yml"
+                    sh "ansible-playbook /home/ansible/.ansible/roles/geerlingguy.nodejs/site.yml"
         }
                 
         
