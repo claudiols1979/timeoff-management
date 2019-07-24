@@ -21,12 +21,7 @@ node {
                        
     }
 
-    stage('Test') {
-        
-            sh "npm test"
-        
-                       
-    }
+    
 
     stage('Push image') {
         /* 
