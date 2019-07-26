@@ -6,6 +6,9 @@ phases:
     runtime-versions:
       nodejs: 10  
     commands:
+      - echo Installing software packages
+      - apt-get update -y
+      - apt-get install -y git make python vim
       - echo Installing Mocha...
       - npm install -g mocha
   pre_build:
@@ -29,7 +32,6 @@ artifacts:
   files:
     - app.js
     - package.json
-    - node_modules/*
     - bin
     - config
     - docs
