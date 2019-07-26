@@ -1,0 +1,17 @@
+version: 0.0
+os: linux
+files:
+- source: /
+ destination: /home/ubuntu/app
+
+permissions:
+- object: /
+   pattern: "**"
+   owner: ubuntu
+   group: ubuntu
+
+hooks:
+    AfterInstall:
+        - location: /bin/hook-afterinstall.sh
+
+
