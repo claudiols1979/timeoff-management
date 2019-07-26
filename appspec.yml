@@ -14,4 +14,18 @@ hooks:
     AfterInstall:
         - location: /bin/hook-afterinstall.sh
 
-
+artifacts:
+  files:
+    - app.js
+    - package.json
+    - appspec.yml
+    - bin
+    - config
+    - docs
+    - lib
+    - migrations
+    - public
+    - scripts
+    - scss
+    - t
+    - views
