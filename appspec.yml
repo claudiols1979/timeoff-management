@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
 - source: /
- destination: /home/ubuntu/app
+  destination: /home/ubuntu/app
 
 permissions:
 - object: /
@@ -12,7 +12,7 @@ permissions:
 
 hooks:
     AfterInstall:
-        - location: /bin/hook-afterinstall.sh
+        - location: /bin/afterinstall.sh
 
 artifacts:
   files:
