@@ -11,7 +11,7 @@ permissions:
    group: ec2-user
 
 hooks:
-    AfterInstall:
+    Install:
         - location: /bin/afterinstall.sh
 
 artifacts:
@@ -19,13 +19,14 @@ artifacts:
     - app.js
     - package.json
     - appspec.yml
-    - bin
-    - config
-    - docs
-    - lib
-    - migrations
-    - public
-    - scripts
-    - scss
-    - t
-    - views
+    - buildspec.yml
+    - bin/*
+    - config/*
+    - docs/*
+    - lib/*
+    - migrations/*
+    - public/*
+    - scripts/*
+    - scss/*
+    - t/*
+    - views/*
