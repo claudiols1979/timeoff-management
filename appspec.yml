@@ -13,9 +13,9 @@ permissions:
 hooks:
     ApplicationStop:
         - location: /bin/stop.sh
-    BeforeInstallation:
+    BeforeInstall:
         - location: /bin/beforeinstall.sh
-    ApplicationStart:
+    Install:
         - location: /bin/start.sh
 
 artifacts:
