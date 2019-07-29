@@ -5,7 +5,7 @@ files:
   destination: /var/www/
 
 permissions:
-- object: /
+- object: /var/www
    pattern: "**"
    owner: ubuntu
    group: ubuntu
