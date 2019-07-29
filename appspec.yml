@@ -7,8 +7,8 @@ files:
 permissions:
 - object: /
    pattern: "**"
-   owner: ec2-user
-   group: ec2-user
+   owner: ubuntu
+   group: ubuntu
 
 hooks:
     ApplicationStop:
@@ -17,8 +17,7 @@ hooks:
         - localtion: /bin/beforeinstall.sh
     ApplicationStart:
         - location: /bin/start.sh
-    validateService:
-        - location /bin/validate.sh
+    
     
         
 
