@@ -17,9 +17,6 @@ hooks:
         - localtion: /bin/beforeinstall.sh
     ApplicationStart:
         - location: /bin/start.sh
-    
-    
-        
 
 artifacts:
   files:
