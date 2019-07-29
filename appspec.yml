@@ -27,13 +27,13 @@ artifacts:
     - package.json
     - appspec.yml
     - buildspec.yml
-    - bin/*
-    - config/*
-    - docs/*
-    - lib/*
-    - migrations/*
-    - public/*
-    - scripts/*
-    - scss/*
-    - t/*
-    - views/*
+    - bin
+    - config
+    - docs
+    - lib
+    - migrations
+    - public
+    - scripts
+    - scss
+    - t
+    - views
