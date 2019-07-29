@@ -37,3 +37,7 @@ artifacts:
     - scss
     - t
     - views
+    - .ebextensions
+    - .git
+    - templates
+    
