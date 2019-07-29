@@ -31,17 +31,17 @@ artifacts:
     - codeclimate.yml
     - .gitingore
     - .travis.yml
-    - bin
-    - config
-    - docs
-    - lib
-    - migrations
-    - public
-    - scripts
-    - scss
-    - t
-    - views
-    - .ebextensions
+    - bin/*
+    - config/*
+    - docs/*
+    - lib/*
+    - migrations/*
+    - public/*
+    - scripts/*
+    - scss/*
+    - t/*
+    - views/*
+    - .ebextensions/*
     - .git
-    - templates
+    - templates/*
     
