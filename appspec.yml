@@ -15,7 +15,7 @@ hooks:
         - location: /bin/stop.sh
     BeforeInstall:
         - location: /bin/beforeinstall.sh
-    Install:
+    ApplicationStart:
         - location: /bin/start.sh
 
 artifacts:
