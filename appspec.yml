@@ -12,11 +12,14 @@ permissions:
 
 hooks:
     ApplicationStop:
-        - location: /bin/stop.sh
+        - location: bin/stop.sh
+          timeout: 180
     BeforeInstall:
-        - location: /bin/beforeinstall.sh
+        - location: bin/beforeinstall.sh
+          timeout: 180
     ApplicationStart:
-        - location: /bin/start.sh
+        - location: bin/start.sh
+          timeout: 180
 
 artifacts:
   files:
