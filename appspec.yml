@@ -27,6 +27,10 @@ artifacts:
     - package.json
     - appspec.yml
     - buildspec.yml
+    - .npmrc
+    - codeclimate.yml
+    - .gitingore
+    - .travis.yml
     - bin
     - config
     - docs
