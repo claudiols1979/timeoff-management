@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
 - source: /
-  destination: /home/ec2-user/app
+  destination: /var/www/
 
 permissions:
 - object: /
@@ -11,8 +11,16 @@ permissions:
    group: ec2-user
 
 hooks:
-    Install:
-        - location: /bin/afterinstall.sh
+    ApplicationStop:
+        - location: /bin/stop.sh
+    BeforeInstallation:
+        - localtion: /bin/beforeinstall.sh
+    ApplicationStart:
+        - location: /bin/start.sh
+    validateService:
+        - location /bin/validate.sh
+    
+        
 
 artifacts:
   files:
