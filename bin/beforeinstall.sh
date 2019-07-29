@@ -19,7 +19,7 @@ sudo git clone https://github.com/claudiols1979/timeoff-management.git
 #SETUP NGINX && SQLITE
 sudo apt-get install -y build-essential openssl libssl-dev pkg-config
 cd /etc/nginx/sites-available
-cp ./templates/timeoff-management /etc/nginx/sites-available/timeoff-management
+cp /var/www/timeoff-management/templates/timeoff-management /etc/nginx/sites-available/timeoff-management
 sudo rm default
 sudo systemctl start sqlite
 
