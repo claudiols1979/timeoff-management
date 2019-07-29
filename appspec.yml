@@ -14,7 +14,7 @@ hooks:
     ApplicationStop:
         - location: /bin/stop.sh
     BeforeInstallation:
-        - localtion: /bin/beforeinstall.sh
+        - location: /bin/beforeinstall.sh
     ApplicationStart:
         - location: /bin/start.sh
 
