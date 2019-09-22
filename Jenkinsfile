@@ -18,7 +18,7 @@ node {
         
     }
         
-
+    /*Still in the /var/lib/jenkins/nodeapp_test npm install to install dependencies on this jenkins workspace scm*/
     stage('Build') {
         node ('master') {
             sh "npm install"
@@ -48,6 +48,7 @@ node {
                 echo "Push docker build tag to DockerHub using ${BUILD_NUMBER}"
     }
 
+    /*Image already built with all dependencies in stage build*/
     stage('Deploy to staging env')  {
         node ('master') {
                 docker.image("claudiols1979/nodeapp_test:${env.BUILD_NUMBER}").inside('-p 3000:3000'){
@@ -74,7 +75,7 @@ node {
     }
 
     stage('Ansible install nodejs role') {
-    /* Provision node app in aws-slave */
+    /* Provision nodejs app role master */
                 node ('master') {
                     sh "ansible-galaxy install geerlingguy.nodejs"
                     
@@ -85,7 +86,7 @@ node {
     }
 
     stage('Ansible install nodejs in aws-slave app_server') {
-    /* Provision node app in aws-slave */
+    /* Provision nodejs app in aws-slave */
                 node ('master') {
                     sh "ansible-playbook /var/lib/jenkins/.ansible/roles/geerlingguy.nodejs/site.yml"
                     
