@@ -50,7 +50,7 @@ node {
 
     stage('Deploy to staging env')  {
         node ('master') {
-                docker.image("claudiols1979/nodeapp:${env.BUILD_NUMBER}").inside('-p 3000:3000'){
+                docker.image("claudiols1979/nodeapp_test:${env.BUILD_NUMBER}").inside('-p 3000:3000'){
                 
             }
                 sh "./scripts/build.sh"
