@@ -3,7 +3,7 @@ node {
      
     stage('Clone repository') {        
         /* Cloning the Repository to our Workspace */
-        node ('centos') {
+        node ('master') {
             checkout scm
         }
 
@@ -12,7 +12,7 @@ node {
 
     stage('Build custom image') {
         /* This builds the actual image */
-        node ('centos') {
+        node ('master') {
             app = docker.build("claudiols1979/nodeapp")
         }
         
@@ -20,7 +20,7 @@ node {
         
 
     stage('Build') {
-        node ('centos') {
+        node ('master') {
             sh "npm install"
         }
             
@@ -29,7 +29,7 @@ node {
     
 
     stage('Push image to dockerhub') {
-        node ('centos') {
+        node ('master') {
             /* 
 			You would need to first register with DockerHub before you can push images to your account
 		*/
@@ -49,7 +49,7 @@ node {
     }
 
     stage('Deploy to staging env')  {
-        node ('centos') {
+        node ('master') {
                 docker.image("claudiols1979/nodeapp_test:${env.BUILD_NUMBER}").inside('-p 3000:3000'){
                 
             }
@@ -64,28 +64,40 @@ node {
     }
     
 
-    stage('Ansible orchestrate AWS') {
-    /* ssh into ansible.local and provsion nodejs to aws ec2 instance */
-                node ('centos') {
-                    sh 'sshpass -p "ansible" ssh -v -o StrictHostKeyChecking=no ansible@ansible.local "cd /home/ansible/.ansible/roles/geerlingguy.nodejs" "ansible-playbook site.yml"'
+       
+    stage('Clone repository to AWS EC2') {
+    /* Cloning the Repository to ec2 instance Workspace /home/jenkins */
+                node ('aws-slave') {
+                    checkout scm
+        }
+         
+    }
+
+    stage('Ansible install nodejs role') {
+    /* Provision node app in aws-slave */
+                node ('master') {
+                    sh "ansible-galaxy install geerlingguy.nodejs"
                     
         
                 
             }
          
     }
-     
-    stage('Clone repository to AWS EC2') {
-    /* Cloning the Repository to ec2 instance Workspace /var/lib/jenkins */
-                node ('aws') {
-                    checkout scm
-        }
+
+    stage('Ansible install nodejs in aws-slave app_server') {
+    /* Provision node app in aws-slave */
+                node ('master') {
+                    sh "ansible-playbook /var/lib/jenkins/.ansible/roles/geerlingguy.nodejs/site.yml"
+                    
+        
+                
+            }
          
     }
 
     stage('Deploy to AWS EC2') {
-    /* Cloning the Repository to ec2 instance Workspace /var/lib/jenkins */
-                node ('aws') {
+    /* Running application in aws platform */
+                node ('aws-slave') {
                 sh "./scripts/build.sh"
                 sh "./scripts/deliver.sh"
                 input message: 'Finished using the web site? (Click "Proceed" to continue)'
