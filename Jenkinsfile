@@ -27,6 +27,16 @@ node {
                         
     }
     
+      stage('SonarQube-Analysis') {
+        node ('master') {
+             def scannerHome = tool 'SonarScanner 4.1';
+             withSonarQubeEnv('My SonarQube Server') { // If you have configured more than one global server connection, you can specify its name
+             sh "${scannerHome}/bin/sonar-scanner"
+        }
+            
+                        
+    }
+
 
     stage('Push image to dockerhub') {
         node ('master') {
