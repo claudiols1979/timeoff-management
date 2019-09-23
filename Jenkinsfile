@@ -29,8 +29,8 @@ node {
     
       stage('SonarQube Analysis') {
         node ('master') {
-             def scannerHome = tool 'SonarQube';
-             withSonarQubeEnv('SonarQube') { // If you have configured more than one global server connection, you can specify its name
+             def scannerHome = tool 'sonar-scanner-3.3';
+             withSonarQubeEnv('SonarQube-server') { // If you have configured more than one global server connection, you can specify its name
              sh "${scannerHome}/bin/sonar-scanner"
             }
             
