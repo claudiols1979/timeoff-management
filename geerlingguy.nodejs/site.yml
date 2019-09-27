@@ -1,6 +1,6 @@
 ---
 - name: Install nodejs in aws-slave
-  hosts: app_server
+  hosts: ec2-web-server
   become: yes
   roles:
     - geerlingguy.nodejs
