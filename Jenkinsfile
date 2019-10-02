@@ -76,7 +76,7 @@ node {
 
     }
     
-
+    /*HERE WE WANT TO INGTEGRATE NEXUS SO WE CAN DOWNLOAD THE IMAGE FROM NEXUS TO AWS EC2*/
        
     stage('Clone repository to AWS EC2') {
     /* Cloning the Repository to ec2 instance Workspace /home/jenkins */
