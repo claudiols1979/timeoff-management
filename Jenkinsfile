@@ -103,10 +103,9 @@ node {
             templateType: 'job',
             jobTemplate: 'deploy nodejs',
             importTowerLogs: true,
-            inventory: 'ec2-web-server,
+            inventory: 'ec2-web-server',
             verbose: true,
             credential: 'ec2-app-server',
-            extraVars: '''---
             async: false
             )
         }
