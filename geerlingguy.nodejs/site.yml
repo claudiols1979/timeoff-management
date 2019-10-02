@@ -1,6 +1,6 @@
 ---
 - name: Install nodejs in ec2-web-server
-  hosts: 34.208.147.238
+  hosts: ec2-app-server
   become: yes
   roles:
     - geerlingguy.nodejs
