@@ -1,20 +1,24 @@
 ---
-- name: Install nodejs in ec2-web-server
-  hosts: ec2-app-server
+- hosts: ec2-app-server
   become: yes
-  roles:
-    - geerlingguy.nodejs
+  tasks: 
+  - name: Install NodeJS
+    roles:
+      - geerlingguy.nodejs
 
-- name: Print NodeJS version
-  hosts: ec2-app-server
-  become: yes
-  tasks:
-    -  shell: node --version
-       args:
-         executable: /bin/bash
-       register: shell_result
+  - name: Print NodeJS version
+    shell: node --version
+      args:
+        executable: /bin/bash
+    register: node_version
 
-    - debug: msg="{{ shell_result.stdout_lines }}"
+    debug: msg="{{ node_version.stdout_lines }}"
+
+  - name: Print NPM version
+    command: npm --version
+    register: npm_version
+
+    debug: msg="{{ npm_version.stout_lines }}"
 
 
 
