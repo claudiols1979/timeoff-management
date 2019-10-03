@@ -12,6 +12,10 @@
     -  shell: node --version
        args:
          executable: /bin/bash
+       register: shell_result
 
-         
+    - debug:
+        var: shell_result.stout_lines
+
+
 
