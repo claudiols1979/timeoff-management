@@ -5,4 +5,13 @@
   roles:
     - geerlingguy.nodejs
 
+- name: Print NodeJS version
+  hosts: ec2-app-server
+  become: yes
+  tasks:
+    -  shell: node --version
+       args:
+         executable: /bin/bash
+
+         
 
