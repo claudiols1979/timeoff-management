@@ -15,7 +15,7 @@
        register: shell_result
 
     - debug:
-        var: shell_result.stout_lines
+        var: shell_result.output
 
 
 
