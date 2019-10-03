@@ -6,18 +6,13 @@
     - geerlingguy.nodejs
   tasks:
   - name: Print NodeJS version
-      shell: node --version
-       args:
+    shell: node --version
+      args:
         executable: /bin/bash
-      register: node_version
+    register: node_version
 
-      debug: msg="{{ node_version.stdout_lines }}"
+    debug: msg="{{ node_version.stdout_lines }}"
 
-  - name: Print NPM version
-    command: npm --version
-    register: npm_version
-
-    debug: msg="{{ npm_version.stout_lines }}"
 
 
 
