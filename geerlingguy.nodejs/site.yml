@@ -5,13 +5,13 @@
   roles:
     - geerlingguy.nodejs
   
-  - name: Print NodeJS version
-    shell: node --version
-    args:
-      executable: /bin/bash
-    register: node_version
+//   - name: Print NodeJS version
+//     shell: node --version
+//     args:
+//       executable: /bin/bash
+//     register: node_version
 
-    debug: msg="{{ node_version.stdout_lines }}"
+//     debug: msg="{{ node_version.stdout_lines }}"
 
 
 
