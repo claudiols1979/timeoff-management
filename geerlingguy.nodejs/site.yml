@@ -1,11 +1,10 @@
 ---
 - hosts: ec2-app-server
   become: yes
+  name: Install NodeJS
+  roles:
+    - geerlingguy.nodejs
   tasks: 
-  - name: Install NodeJS
-    roles:
-      - geerlingguy.nodejs
-
   - name: Print NodeJS version
     shell: node --version
     args:
