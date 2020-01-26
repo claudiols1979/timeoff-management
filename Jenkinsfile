@@ -1,4 +1,5 @@
 node {
+
     def app
      
     stage('Clone repository') {        
@@ -66,6 +67,7 @@ node {
                 docker.image("claudiols1979/nodeapp_test:${env.BUILD_NUMBER}").inside('-p 3000:3000'){
                 
             }
+                
                 sh "./scripts/build.sh"
                 sh "./scripts/deliver.sh"
                 input message: 'Finished using the web site? (Click "Proceed" to continue)'
@@ -78,16 +80,18 @@ node {
     
     /*HERE WE WANT TO INGTEGRATE NEXUS SO WE CAN DOWNLOAD THE IMAGE FROM NEXUS TO AWS EC2*/
        
-    stage('Clone repository to AWS EC2') {
+    /*
+        stage('Clone repository to AWS EC2') {*/
     /* Cloning the Repository to ec2 instance Workspace /home/jenkins */
-                node ('aws-slave') {
+        /*        node ('aws-slave') {
                     checkout scm
         }
          
     }
+    */
 
     // stage('Ansible install nodejs role') {
-    // /* Provision nodejs app role master */
+     /* Provision nodejs app role master */
     //             node ('master') {
     //                 sh "ansible-galaxy install geerlingguy.nodejs"
                     
@@ -97,7 +101,7 @@ node {
          
     // }
     
-    stage('Deploy nodejs using ansible in AWS EC2 instance') {
+   /* stage('Deploy nodejs using ansible in AWS EC2 instance') {
         ansibleTower(
             towerServer: 'Ansible Tower',
             templateType: 'job',
@@ -110,7 +114,7 @@ node {
             )
         }
 
-    
+    */
     
     
 
@@ -124,10 +128,11 @@ node {
     //         }
          
     // }
+    
 
-    stage('Deploy Application to AWS EC2') {
+    /*stage('Deploy Application to AWS EC2') {*/
     /* Running application in aws platform */
-                node ('aws-slave') {
+            /*    node ('aws-slave') {
                 sh "./scripts/build.sh"
                 sh "./scripts/deliver.sh"
                 input message: 'Finished using the web site? (Click "Proceed" to continue)'
@@ -135,6 +140,7 @@ node {
             }
         
         }
-
+        */
     }
+    
 

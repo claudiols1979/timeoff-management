@@ -33,9 +33,9 @@ RUN apt-get update -y \
     
 #RUN adduser --system app --home /app
 #USER app
-#WORKDIR /app
-#RUN git clone https://github.com/timeoff-management/application.git timeoff-management
-#WORKDIR /app/timeoff-management
+WORKDIR /app
+RUN git clone https://github.com/timeoff-management/application.git timeoff-management
+WORKDIR /app/timeoff-management
 
 #RUN npm install
 
