@@ -24,5 +24,5 @@ set +x
 
 echo 'Now...'
 echo 'Visit http://localhost:3000 if this is the last stage to see your Node.js application in action.'
-echo '(This is why you specified the "args ''-p 3001:3000''" parameter when you'
+echo '(This is why you specified the "args ''-p 3000:3000''" parameter when you'
 echo 'created your initial Pipeline as a Jenkinsfile.)'
