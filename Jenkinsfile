@@ -36,10 +36,7 @@ node {
                         
         }
 
-      }
-
-
-    stage('Push image to dockerhub') {
+        stage('Push image to dockerhub') {
         node ('master') {
             /* 
 			You would need to first register with DockerHub before you can push images to your account
@@ -139,6 +136,11 @@ node {
         
         }
         */
-    }
+    
+
+      }
+
+
+    
     
 
