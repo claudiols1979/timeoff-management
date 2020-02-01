@@ -30,9 +30,7 @@ node {
     
       stage('SonarQube Analysis') {
         node ('master') {
-             def scannerHome = tool 'sonar-scanner';
-             withSonarQubeEnv('sonarqube') { // If you have configured more than one global server connection, you can specify its name
-             sh "${scannerHome}/sonar-scanner"
+              sh "/opt/sonar-scanner-4.2.0.1873-linux/bin/sonar-scanner -Dsonar.host.url=http://192.168.0.118:9000 -Dsonar.projectName=timeoff-management -Dsonar.projectVersion=1.0 -Dsonar.projectKey=timeoff-management:app -Dsonar.sources=. -Dsonar.projectBaseDir=/var/lib/jenkins/workspace/timeoff-management"
             }
             
                         
