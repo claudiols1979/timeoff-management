@@ -37,7 +37,8 @@ node {
         }
       stage('Upload artifactory - Nexus 3') {
           node ('master') {
-              sh "zip -r timeoff-management@2 timeoff-management@2.zip"
+              zip zipFile: 'timeoff-management@2.zip', archive: false, dir: 'timeoff-management@2'
+              archiveArtifacts artifacts: 'timeoff-management@2.zip', fingerprint: true
               sh "curl -v -u admin:admin --upload-file timeoff-management@2.zip http://192.168.0.118:8081/repository/devops-timeoff-management-webapp/timeoff-management@2.zip"
               }
             }
