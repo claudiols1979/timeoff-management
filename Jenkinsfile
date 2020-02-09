@@ -36,6 +36,13 @@ node {
                         
         }
 
+        stage('Upload artifactory to Nexus3') {
+          node ('master') {
+              sh "zip -r timeoff-management@2 timeoff-management@2.zip"
+              sh "curl -v -u admin:admin --upload-file timeoff-management@2.zip http://192.168.0.118:8081/repository/devops-timeoff-management-webapp/timeoff-management@2.zip"
+          }
+      }
+
         stage('Push image to dockerhub') {
         node ('master') {
             /* 
@@ -55,7 +62,7 @@ node {
         
                 echo "Push docker build tag to DockerHub using ${BUILD_NUMBER}"
     }
-
+    /*STAGE ANSIBLE TO CHECK HOST*/
     /*Image already built with all dependencies in stage build*/
     stage('Deploy to staging env')  {
         node ('master') {
