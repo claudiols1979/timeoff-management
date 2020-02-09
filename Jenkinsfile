@@ -41,6 +41,7 @@ node {
             //   zip zipFile: 'timeoff-management@2.zip', archive: false, dir: 'timeoff-management@2'
             //   archiveArtifacts artifacts: 'timeoff-management@2.zip', fingerprint: true              
               zip zipFile: 'timeoff-management@2.zip', archive: false, dir: '/var/lib/jenkins/workspace/timeoff-management@2'
+              archiveArtifacts artifacts: 'timeoff-management@2.zip', fingerprint: true
               sh "cd /var/lib/jenkins/workspace/;curl -v -u admin:admin --upload-file timeoff-management@2.zip http://192.168.0.118:8081/repository/devops-timeoff-management-webapp/timeoff-management@2.zip"
             //sh "curl -v -u admin:admin --upload-file timeoff-management@2.zip http://192.168.0.118:8081/repository/devops-timeoff-management-webapp/timeoff-management@2.zip"
               }
