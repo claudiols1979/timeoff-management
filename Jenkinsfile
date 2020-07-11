@@ -25,7 +25,7 @@ node {
     
     stage('SonarQube Analysis') {
         node ('master') {
-              sh "/opt/sonar-scanner-4.2.0.1873-linux/bin/sonar-scanner -Dsonar.host.url=http://192.168.0.118:9000 -Dsonar.projectName=timeoff-management -Dsonar.projectVersion=1.0 -Dsonar.projectKey=timeoff-management:app -Dsonar.sources=. -Dsonar.projectBaseDir=/var/lib/jenkins/workspace/timeoff-management@2"
+              sh "/opt/sonar/bin/sonar-scanner -Dsonar.host.url=http://192.168.0.118:9000 -Dsonar.projectName=timeoff-management -Dsonar.projectVersion=1.0 -Dsonar.projectKey=timeoff-management:app -Dsonar.sources=. -Dsonar.projectBaseDir=/var/lib/jenkins/workspace/timeoff-management@2"
             }                       
     }
     stage('Upload artifactory - Nexus 3') {
