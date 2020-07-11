@@ -6,48 +6,41 @@ node {
         /* Cloning the Repository to our Workspace */
         node ('master') {
             checkout scm
-        }
-
-        
+        }        
     }
 
     stage('Build custom image') {
         /* This builds the actual image */
         node ('master') {
             app = docker.build("claudiols1979/nodeapp")
-        }
-        
+        }        
     }
         
     /*Still in the /var/lib/jenkins/nodeapp_test npm install to install dependencies on this jenkins workspace scm*/
     stage('Build') {
         node ('master') {
             sh "npm install"
-        }
-            
-                        
+        }                        
     }
     
-      stage('SonarQube Analysis') {
+    stage('SonarQube Analysis') {
         node ('master') {
               sh "/opt/sonar-scanner-4.2.0.1873-linux/bin/sonar-scanner -Dsonar.host.url=http://192.168.0.118:9000 -Dsonar.projectName=timeoff-management -Dsonar.projectVersion=1.0 -Dsonar.projectKey=timeoff-management:app -Dsonar.sources=. -Dsonar.projectBaseDir=/var/lib/jenkins/workspace/timeoff-management@2"
-            }
-            
-                        
-        }
-      stage('Upload artifactory - Nexus 3') {
-          node ('master') {
+            }                       
+    }
+    stage('Upload artifactory - Nexus 3') {
+        node ('master') {
             //   sh "cd .."
             //   zip zipFile: 'timeoff-management@2.zip', archive: false, dir: 'timeoff-management@2'
             //   archiveArtifacts artifacts: 'timeoff-management@2.zip', fingerprint: true
-              sh "cd /var/lib/jenkins/workspace/timeoff-management@2;sudo rm -rf timeoff-management@2.zip"           
-              zip zipFile: 'timeoff-management@2.zip', archive: false, dir: '/var/lib/jenkins/workspace/timeoff-management@2'
-              archiveArtifacts artifacts: 'timeoff-management@2.zip', fingerprint: true
-              sh "cd /var/lib/jenkins/workspace/timeoff-management@2;curl -v -u admin:admin --upload-file timeoff-management@2.zip http://192.168.0.118:8081/repository/devops-timeoff-management-webapp/timeoff-management@2.zip"
+            sh "cd /var/lib/jenkins/workspace/timeoff-management@2;sudo rm -rf timeoff-management@2.zip"           
+            zip zipFile: 'timeoff-management@2.zip', archive: false, dir: '/var/lib/jenkins/workspace/timeoff-management@2'
+            archiveArtifacts artifacts: 'timeoff-management@2.zip', fingerprint: true
+            sh "cd /var/lib/jenkins/workspace/timeoff-management@2;curl -v -u admin:sILVANa1996!+ --upload-file timeoff-management@2.zip http://192.168.0.118:8081/repository/devops-timeoff-management-webapp/timeoff-management@2.zip"
             //sh "curl -v -u admin:admin --upload-file timeoff-management@2.zip http://192.168.0.118:8081/repository/devops-timeoff-management-webapp/timeoff-management@2.zip"
               }
             }
-        stage('Push image to dockerhub') {
+    stage('Push image to dockerhub') {
         node ('master') {
             /* 
 			You would need to first register with DockerHub before you can push images to your account
