@@ -20,7 +20,7 @@ node {
     stage('Build') {
         node ('master') {            
             /*sh "npm install"*/
-            withNPM(npmrcConfig: 'my-custom-nprc') {
+            withNPM(npmrcConfig: 'mycustomnprc') {
                 sh 'npm install'
             }
         }                        
