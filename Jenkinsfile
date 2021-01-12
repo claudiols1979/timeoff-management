@@ -20,6 +20,7 @@ node {
     /*Still in the /var/lib/jenkins/nodeapp_test npm install to install dependencies on this jenkins workspace scm*/
     stage('Build') {
         node ('master') {
+            sh "which npm"
             sh "npm install"
         }                        
     }
