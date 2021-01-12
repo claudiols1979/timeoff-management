@@ -1,6 +1,7 @@
 node {
 
     def app
+    tools {nodejs "nodejs"}
      
     stage('Clone repository') {        
         /* Cloning the Repository to our Workspace */
