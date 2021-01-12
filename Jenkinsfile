@@ -61,7 +61,7 @@ node {
         } */
             withDockerRegistry([ credentialsId: "docker-hub", url: "" ]) {
                 sh "docker tag claudiols1979/nodeapp:latest claudiols1979/nodeapp_test:${env.BUILD_NUMBER}"
-                sh "docker push claudiols1979/nodeapp_test"
+                sh "docker push claudiols1979/nodeapp_test:${env.BUILD_NUMBER}"
 
             } 
         }
