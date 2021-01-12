@@ -45,7 +45,8 @@ node {
             sh "sudo apt install zip -y"
             sh "zip -r timeoff-management@2.zip /var/lib/jenkins/workspace/timeoff-management@2"
             archiveArtifacts artifacts: 'timeoff-management@2.zip', fingerprint: true
-            sh "cd /var/lib/jenkins/workspace/timeoff-management@2;curl -v -x POST -u admin:sILVANa1996!+ --upload-file timeoff-management@2.zip http://192.168.0.107:8081/repository/timeoff-management/timeoff-management@2.zip"
+            // sh "cd /var/lib/jenkins/workspace/timeoff-management@2;curl -v -u admin:sILVANa1996!+ --upload-file timeoff-management@2.zip http://192.168.0.107:8081/repository/timeoff-management/timeoff-management@2.zip"
+            sh "cd /var/lib/jenkins/workspace/timeoff-management@2;curl -v -u admin:sILVANa1996!+ --upload-file timeoff-management@2.zip http%3A%2F%2F192.168.0.107%3A8081%2Frepository%2Ftimeoff-management%2Ftimeoff-management%402.zip"
             //sh "curl -v -u admin:admin --upload-file timeoff-management@2.zip http://192.168.0.118:8081/repository/devops-timeoff-management-webapp/timeoff-management@2.zip"
               }
             }
