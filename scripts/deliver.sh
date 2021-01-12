@@ -23,6 +23,6 @@ set +x
 
 
 echo 'Now...'
-echo 'Visit http://192.168.0.118:3000 if this is the last stage to see your Node.js application in action.'
+echo 'Visit http://192.168.0.107:3000 if this is the last stage to see your Node.js application in action.'
 echo '(This is why you specified the "args ''-p 3000:3000''" parameter when you'
 echo 'created your initial Pipeline as a Jenkinsfile.)'
