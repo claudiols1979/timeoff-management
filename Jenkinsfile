@@ -19,7 +19,10 @@ node {
     /*Still in the /var/lib/jenkins/nodeapp_test npm install to install dependencies on this jenkins workspace scm*/
     stage('Build') {
         node ('master') {            
-            sh "npm install"
+            /*sh "npm install"*/
+            withNPM(npmrcConfig: 'my-custom-nprc') {
+                sh 'npm install'
+            }
         }                        
     }
     /*sonarqube token 162e6c51cb9e7ecf7a5335fd6e22a2336a6bdf9c*/
