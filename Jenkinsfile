@@ -20,7 +20,7 @@ node {
     stage('Build') {
         node ('master') {            
             /*sh "npm install"*/
-           withNPM(npmrcConfig: 'mycustomnprc') {
+           withNPM(npmrcConfig: 'c91e9113-9c37-4187-9782-8a3f87af0352') {
                 sh 'npm install'
             /*env.NODEJS_HOME = "${tool 'nodejs'}"
             env.PATH="${env.NODEJS_HOME};${env.PATH}"*/
