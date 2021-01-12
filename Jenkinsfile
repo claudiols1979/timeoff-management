@@ -22,7 +22,7 @@ node {
             /*sh "npm install"*/
            /* withNPM(npmrcConfig: 'mycustomnprc') {
                 sh 'npm install'*/
-            env.NODEJS_HOME = "${tool 'Node 14.15.4'}"
+            env.NODEJS_HOME = "${tool 'nodejs'}"
             env.PATH="${env.NODEJS_HOME};${env.PATH}"
             sh 'npm install'
             }
