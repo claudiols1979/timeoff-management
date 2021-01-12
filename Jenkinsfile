@@ -27,7 +27,7 @@ node {
             sh 'npm install'
             }
         }                        
-    }
+    
     /*sonarqube token 162e6c51cb9e7ecf7a5335fd6e22a2336a6bdf9c*/
     stage('SonarQube Analysis') {
         node ('master') {
