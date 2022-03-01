@@ -32,7 +32,7 @@ node {
     /*sonarqube token 162e6c51cb9e7ecf7a5335fd6e22a2336a6bdf9c*/
     stage('SonarQube Analysis') {
         node ('master') {
-              sh "/opt/sonar-scanner/bin/sonar-scanner -Dsonar.login=admin -Dsonar.password=sILVANa1996!+ -Dsonar.host.url=http://192.168.0.107:9000 -Dsonar.projectName=timeoff-management -Dsonar.projectVersion=1.0 -Dsonar.projectKey=timeoff-management:app -Dsonar.sources=. -Dsonar.projectBaseDir=/var/lib/jenkins/workspace/timeoff-management@2"
+              sh "/opt/sonar-scanner/bin/sonar-scanner -Dsonar.login=admin -Dsonar.password=sILVANa1996!+ -Dsonar.host.url=http://192.168.100.16:9000 -Dsonar.projectName=timeoff-management -Dsonar.projectVersion=1.0 -Dsonar.projectKey=timeoff-management:app -Dsonar.sources=. -Dsonar.projectBaseDir=/var/lib/jenkins/workspace/timeoff-management@2"
             }                       
     }
     stage('Upload artifactory - Nexus 3') {
